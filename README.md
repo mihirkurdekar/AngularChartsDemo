@@ -3,11 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 # Dependecies
-To install all depndecies just run 'npm install'
+To install all depndecies just run `npm install`
 
 # Output
 
-To check outout you can run 'npm start' and check it on 'http://localhost:4200/'
+To check outout you can run `npm start` and check it on http://localhost:4200/
 
 ## Further help
 
