@@ -5,15 +5,17 @@ import { Ng2DatetimePickerModule } from "ng2-datetime-picker";
 
 
 import { AppComponent } from './app.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
+import { GraphComponent } from './graph/graph.component';
 
 import { GenerateRandomDataService } from "./generate-random-data.service";
+import { LineGraphComponent } from './line-graph/line-graph.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent
+    GraphComponent,
+    LineGraphComponent
   ],
   imports: [
     BrowserModule,
