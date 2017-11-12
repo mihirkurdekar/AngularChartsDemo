@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import Chart from 'chart.js';
 import { ChartData } from '../chart-data';
 import { element } from 'protractor';
 import { GenerateRandomDataService } from '../generate-random-data.service';
