@@ -56,8 +56,8 @@ export class LineGraphComponent implements OnInit,OnChanges {
   
   // Return the x pixel for a graph point
   getXPixel(val) {
-    return ((this.graph.width - this.xPadding) / (this.getMaxX())) * val + (this.xPadding * 1.5);
-      //return ((this.graph.width - this.xPadding) / this.data.length) * val + (this.xPadding * 1.5);
+    //return ((this.graph.width - this.xPadding) / (this.getMaxX())) * val + (this.xPadding * 1.5);
+    return ((this.graph.width - this.xPadding) / this.data.length) * val + this.xPadding;
   }
   
   // Return the y pixel for a graph point
@@ -85,25 +85,21 @@ export class LineGraphComponent implements OnInit,OnChanges {
         c.lineTo(this.graph.width, this.graph.height - this.yPadding);
         c.stroke();
         
-        // Draw the X value texts
-        let myMaxX = this.getMaxX();
-        for (var i = 0; i <= myMaxX; i++) {
-            // uses data.values[i].X
-            c.fillText(i+"", this.getXPixel(i), this.graph.height - this.yPadding + 20);
+        // Draw the X value texts        
+        for(var i = 0; i < this.data.length; i ++) {
+            c.fillText(this.data[i].X.substring(17,19), this.getXPixel(i), this.graph.height - this.yPadding + 20);
         }
-        /* for(var i = 0; i < this.data.length; i ++) {
-            c.fillText(this.data[i].X, this.getXPixel(i), this.graph.height - this.yPadding + 20);
-        } */
+        
         
         // Draw the Y value texts
         c.textAlign = 'right'
         c.textBaseline = 'middle';
         
-        for(var i = 0; i < this.getMaxY(); i += 10) {
+        for(var i = 0; i < this.getMaxY(); i += 100) {
             c.fillText(i+'', this.xPadding - 10, this.getYPixel(i));
         }
         
-        c.strokeStyle = '#f00';
+        c.strokeStyle = '#c8d2d7';
         
         // Draw the line graph
         c.beginPath();
@@ -124,6 +120,7 @@ export class LineGraphComponent implements OnInit,OnChanges {
             c.fill();
             this.dots.push(new Dot(x,y,this.data[i].X+" , "+this.data[i].Y));
         }
+        //console.log(this.dots);
       }    
   }
 
@@ -131,16 +128,18 @@ export class LineGraphComponent implements OnInit,OnChanges {
     if(this.graph!=undefined && this.graph!=null){
         let tipCanvas:HTMLCanvasElement = <HTMLCanvasElement>document.querySelector("#tip");
         var tipCtx = tipCanvas.getContext("2d");
-        let mouseX = event.clientX - this.graph.getBoundingClientRect().top;
-        let mouseY = event.clientY - this.graph.getBoundingClientRect().left;
+        let mouseX = event.clientX- this.graph.getBoundingClientRect().left;
+        let mouseY = event.clientY- this.graph.getBoundingClientRect().top;
+        //console.log("x:"+mouseX+"y:"+mouseY);
     
-        // Put your mousemove stuff here
+     
         var hit = false;
         if(this.dots!=undefined &&this.dots.length>0){
-            for (var i = 0; i < this.dots.length; i++) {
-                var dot = this.dots[i];
-                var dx = mouseX - dot.x;
-                var dy = mouseY - dot.y;
+            for (let i = 0; i < this.dots.length; i++) {
+                let dot = this.dots[i];
+                let dx = mouseX - dot.x;
+                let dy = mouseY - dot.y;
+                
                 if (dx * dx + dy * dy < 16) {
                     tipCanvas.style.left = (dot.x) + "px";
                     tipCanvas.style.top = (dot.y) - 40 + "px";
@@ -148,7 +147,7 @@ export class LineGraphComponent implements OnInit,OnChanges {
                     //tipCtx.rect(0,0,tipCanvas.width,tipCanvas.height);
                     tipCtx.fillText(this.dots[i].text, 5, 15);
                     hit = true;
-                    console.log("hit");
+                    //console.log("hit");
                 }
             }
         }

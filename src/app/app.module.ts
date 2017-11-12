@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ChartModule } from 'angular2-chartjs';
 import { Ng2DatetimePickerModule } from "ng2-datetime-picker";
 
 
@@ -19,7 +18,6 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
   ],
   imports: [
     BrowserModule,
-    ChartModule,
     Ng2DatetimePickerModule
   ],
   providers: [GenerateRandomDataService],
