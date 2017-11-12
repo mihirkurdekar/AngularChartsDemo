@@ -1,4 +1,7 @@
-<p>
-    line-chart works!
-</p>
+<h2>Line chart demo</h2>
+<div>
+    <div>Enter start and end date</div>
+    Start Date: <input [(ngModel)]="startDate" ng2-datetime-picker /> End Date: <input [(ngModel)]="endDate" ng2-datetime-picker (valueChanged)="endDateChanged()" />
+</div>
+
 <chart [type]="type" [data]="data" [options]="options"></chart>

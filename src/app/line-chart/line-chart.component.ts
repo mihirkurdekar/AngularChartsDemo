@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation,Input } from '@angular/core';
 import Chart from 'chart.js';
 import { ChartData } from '../chart-data';
 import { element } from 'protractor';
+import { GenerateRandomDataService } from '../generate-random-data.service';
 
 @Component({
   selector: 'line-chart',
@@ -16,15 +17,16 @@ export class LineChartComponent implements OnInit {
   labels: Array<string>;
   dataNums: Array<number>;
   data:any;
+  startDate:Date;
+  endDate:Date;
 
-
-  constructor() { }
+  constructor(private generateRandomDataService:GenerateRandomDataService) { }
 
   ngOnInit() {
     this.labels=[];
     this.dataNums=[];
     this.chartData.forEach(element => {
-      this.labels.push(element.date.getSeconds().toString());
+      this.labels.push(element.date.toISOString());
       this.dataNums.push(element.data);
     });
 
@@ -46,6 +48,11 @@ export class LineChartComponent implements OnInit {
     responsive: true,
     maintainAspectRatio: false
   };
+
+  endDateChanged():void{
+    this.chartData=this.generateRandomDataService.generateData(this.startDate,this.endDate);
+    this.ngOnInit();
+  }
 
 
 }
