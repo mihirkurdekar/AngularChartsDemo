@@ -4,6 +4,4 @@
     Start Date: <input [(ngModel)]="startDate" ng2-datetime-picker /> End Date: <input [(ngModel)]="endDate" ng2-datetime-picker (valueChanged)="endDateChanged()" />
 </div>
 
-<!-- <chart [type]="type" [data]="data" [options]="options"></chart> -->
-
-<line-graph [graph-data]="graphData"></line-graph>
+<app-line-graph [graph-data]="graphData"></app-line-graph>

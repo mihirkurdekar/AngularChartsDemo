@@ -1,9 +1,10 @@
 import { Component, OnInit, OnChanges, ViewEncapsulation, Input, ChangeDetectionStrategy } from '@angular/core';
 import { GraphPoint } from '../graph-point';
 import { Dot } from '../dot';
+import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
-    selector: 'line-graph',
+    selector: 'app-line-graph',
     templateUrl: './line-graph.component.html',
     styleUrls: ['./line-graph.component.css'],
     encapsulation: ViewEncapsulation.None,
@@ -25,8 +26,10 @@ export class LineGraphComponent implements OnInit, OnChanges {
     ngOnInit() {
     }
 
-    ngOnChanges() {
-        this.draw();
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['data']) {
+            this.draw();
+        }
     }
 
     getMaxX() {

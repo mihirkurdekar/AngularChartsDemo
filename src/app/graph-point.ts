@@ -16,9 +16,7 @@ export class GraphPoint {
         this._y = v;
     }
 
-    /**
-     *
-     */
+
     constructor(x: string, y: number) {
         this._x = x;
         this._y = y
