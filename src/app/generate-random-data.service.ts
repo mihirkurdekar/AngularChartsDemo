@@ -14,7 +14,7 @@ export class GenerateRandomDataService {
   max = 1000;
   response: Array<ChartData>;
 
-  generateRandomNumber(): number {
+  /* generateRandomNumber(): number {
     return Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
   }
 
@@ -27,7 +27,7 @@ export class GenerateRandomDataService {
     }
 
     return this.response;
-  }
+  } */
 
   getDataFromService(startDate: Date, endDate: Date): Observable<Array<ChartData>> {
     this.response = [];

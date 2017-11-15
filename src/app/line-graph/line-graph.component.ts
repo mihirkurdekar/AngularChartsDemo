@@ -78,9 +78,20 @@ export class LineGraphComponent implements OnInit, OnChanges {
             c.stroke();
 
             // Draw the X value texts
-            const inc = (this.data.length > 1500) ? 600 : 60;
-            for (let i = 0; i < this.data.length; i += inc) {
-                c.fillText(this.data[i].X.substr(11, 19), this.getXPixel(i), this.graph.height - this.yPadding + 20);
+            // const inc = (this.data.length > 1500) ? 600 : 60;
+            // interval between text on X axis
+            let interval = 6;
+            if (this.data.length < 100) {
+                interval = 10;
+            } else if (this.data.length < 1000) {
+                interval *= 10;
+            } else if (this.data.length < 10000) {
+                interval *= 100;
+            } else {
+                interval *= 1000;
+            }
+            for (let i = 0; i < this.data.length; i += interval) {
+                c.fillText(this.data[i].X.substr(11, 17), this.getXPixel(i), this.graph.height - this.yPadding + 20);
             }
 
 
