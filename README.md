@@ -7,12 +7,12 @@ Follow these 3 simple steps to run the project
 ## Clone
 To clone `git clone https://github.com/mihirkurdekar/AngularChartsDemo.git line-chart-demo`
 
-## Dependecies
+## Install Dependecies
 To install all depndecies run 
 `cd line-chart-demo`
 `npm install`
 
-## Output
+## Run
 To check output you can run `npm start` and check it on http://localhost:4200/
 
 ## Further help
