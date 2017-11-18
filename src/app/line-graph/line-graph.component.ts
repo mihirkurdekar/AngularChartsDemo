@@ -163,6 +163,7 @@ export class LineGraphComponent implements OnInit, OnChanges {
                         // tipCtx.rect(0,0,tipCanvas.width,tipCanvas.height);
                         tipCtx.fillText(this.dots[i].text, 5, 15);
                         hit = true;
+                        break;
                         // console.log("hit");
                     }
                 }
